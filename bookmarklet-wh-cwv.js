@@ -1,10 +1,10 @@
-javascript:(function(){
+function runCWVBookmarklet(apiKey){
     var s = document.createElement('script');
     s.src = 'https://apis.google.com/js/api.js';
     document.body.appendChild(s);
     s.onload = function(){
         gapi.load('client', function(){
-            gapi.client.setApiKey('YOUR_API_KEY');  // Replace with your actual API key
+            gapi.client.setApiKey(apiKey);  // Use the apiKey parameter
             gapi.client.load('https://chromeuxreport.googleapis.com/$discovery/rest?version=v1').then(function(){
                 var popup = document.createElement('div');
                 popup.style.position = 'fixed';
@@ -279,4 +279,4 @@ javascript:(function(){
             alert('Failed to load the GAPI client.');
         });
     };
-})();
+}
